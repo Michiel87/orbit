@@ -175,7 +175,7 @@ function applyFilter(record: Record, filter: any) {
             expected.some(e => actual.type === e.type && actual.id === e.id)
           );
         } else if (expected === null) {
-          return !actual;
+          return actual === null;
         } else {
           return (
             actual !== undefined &&
