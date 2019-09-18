@@ -163,6 +163,8 @@ function applyFilter(record: Record, filter: any) {
             actual !== undefined &&
             expected.some(e => actual.type === e.type && actual.id === e.id)
           );
+        } else if (expected === null) {
+          return !actual;
         } else {
           return (
             actual !== undefined &&
