@@ -165,8 +165,7 @@ function applyFilter(record: Record, filter: any) {
         );
     }
   } else if (filter.kind === 'relatedRecord') {
-    let relation = deepGet(record, ['relationships', filter.relation]);
-    let actual = relation === undefined ? undefined : relation.data;
+    let actual = deepGet(record, ['relationships', filter.relation, 'data']);
     let expected = filter.record;
     switch (filter.op) {
       case 'equal':

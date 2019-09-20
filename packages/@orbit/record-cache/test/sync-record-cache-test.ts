@@ -3198,9 +3198,15 @@ module('SyncRecordCache', function(hooks) {
       id: 'titan',
       type: 'moon',
       attributes: { name: 'titan' },
+<<<<<<< HEAD
       relationships: { 
         planet: { data: null } ,
         star: { data: { type: 'star', id: 'sun' } } 
+=======
+      relationships: {
+        planet: { data: null },
+        star: { data: { type: 'star', id: 'sun' } }
+>>>>>>> 1102b62eec777ec7e5cc1751cc5f17dde0f6a0fb
       }
     };
 
