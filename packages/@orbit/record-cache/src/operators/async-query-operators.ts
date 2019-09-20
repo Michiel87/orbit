@@ -137,6 +137,7 @@ function applyFilter(record: Record, filter: any) {
     let relation = deepGet(record, ['relationships', filter.relation]);
     let actual: RecordIdentity[] = relation === undefined ? [] : relation.data;
     let expected: RecordIdentity[] = filter.records;
+  
     switch (filter.op) {
       case 'equal':
         return (
@@ -171,6 +172,7 @@ function applyFilter(record: Record, filter: any) {
       case 'equal':
         if (Array.isArray(expected)) {
           return (
+            actual !== null &&
             actual !== undefined &&
             expected.some(e => actual.type === e.type && actual.id === e.id)
           );
@@ -178,6 +180,7 @@ function applyFilter(record: Record, filter: any) {
           return actual === null;
         } else {
           return (
+            actual !== null &&
             actual !== undefined &&
             actual.type === expected.type &&
             actual.id === expected.id

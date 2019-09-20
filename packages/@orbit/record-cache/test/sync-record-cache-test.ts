@@ -1999,7 +1999,7 @@ module('SyncRecordCache', function(hooks) {
       id: 'titan',
       type: 'moon',
       attributes: { name: 'titan' },
-      relationships: {}
+      relationships: { planet: { data: null } }
     };
 
     cache.patch(t => [
@@ -3198,7 +3198,10 @@ module('SyncRecordCache', function(hooks) {
       id: 'titan',
       type: 'moon',
       attributes: { name: 'titan' },
-      relationships: { star: { data: { type: 'star', id: 'sun' } } }
+      relationships: { 
+        planet: { data: null } ,
+        star: { data: { type: 'star', id: 'sun' } } 
+      }
     };
 
     cache.patch(t => [
@@ -3222,7 +3225,7 @@ module('SyncRecordCache', function(hooks) {
           .findRelatedRecords(sun, 'celestialObjects')
           .filter({ relation: 'planet', record: null })
       ),
-      [titan, jupiter, earth, mars, mercury]
+      [titan]
     );
     arrayMembershipMatches(
       assert,

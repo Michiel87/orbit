@@ -160,6 +160,7 @@ function applyFilter(record: Record, filter: any) {
       case 'equal':
         if (Array.isArray(expected)) {
           return (
+            actual !== null &&
             actual !== undefined &&
             expected.some(e => actual.type === e.type && actual.id === e.id)
           );
@@ -167,6 +168,7 @@ function applyFilter(record: Record, filter: any) {
           return actual === null;
         } else {
           return (
+            actual !== null &&
             actual !== undefined &&
             actual.type === expected.type &&
             actual.id === expected.id
